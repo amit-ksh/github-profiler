@@ -1,0 +1,176 @@
+:host {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #000;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+h1 {
+  padding: 2rem;
+}
+
+form {
+  padding: 0 2rem;
+}
+
+.username {
+  width: 100%;
+}
+
+.profile__wrapper {
+  margin: 1rem 2rem;
+  padding: 1.5rem 1rem;
+  border: 2px black solid;
+  border-radius: 8px;
+}
+
+.profile__container {
+  margin: 0 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10%;
+}
+
+.profile__img img {
+  width: 200px;
+  height: 200px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  border: 3px lightgray solid;
+  padding: 1px;
+}
+
+.profile h3 {
+  font-size: 2rem;
+}
+
+.profile p {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+@media only screen and (max-width: 700px) {
+  .profile__container {
+    flex-direction: column;
+  }
+  .profile {
+    margin-top: 2rem;
+  }
+}
+
+.badge {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.badge p, a {
+  margin: 0;
+}
+
+.repos__container {
+  margin: 2rem;
+  padding-bottom: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 4rem;
+}
+
+.repo {
+  padding: 1rem;
+  border: 2px solid black;
+}
+
+.repo h4 {
+  font-size: 2rem;
+  color: lightskyblue;
+}
+
+.repo p {
+  font-size: 1rem;
+  letter-spacing: -1px;
+  font-weight: 500;
+}
+
+.page-buttons {
+  margin: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-buttons button {
+  background-color: white;
+  border: 1px solid lightgray;
+  border-right: 0;
+  padding: 0.5rem;
+  color: blue;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.page-buttons button:last-of-type {
+  border-right: 1px solid lightgray;
+}
+
+@media only screen and (max-width: 700px) {
+  .repos__container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem 0;
+  }
+}
+
+.navigator {
+  padding-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10rem;
+}
+
+.navigator button:first-of-type {
+  justify-self: flex-end;
+}
+
+.navigator button:last-of-type {
+  justify-self: flex-start;
+}
+
+.navigator button {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border: 1px solid lightgray;
+  border-radius: 20px;
+  color: blue;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.navigator button:hover,
+.page-buttons button:hover {
+  background: blue;
+  color: white;
+}
