@@ -1,0 +1,11 @@
+.badge {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
+.badge p,
+a {
+  margin: 0;
+}

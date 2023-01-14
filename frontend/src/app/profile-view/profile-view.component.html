@@ -1,0 +1,33 @@
+<div class="profile__wrapper">
+  <div class="profile__container">
+    <div class="profile__img">
+      <img [src]="user.avatarUrl" />
+    </div>
+    <div class="profile">
+      <div class="">
+        <h3>{{ user.name }}</h3>
+      </div>
+      <p *ngIf="user.bio">{{ user.bio }}</p>
+
+      <app-badge
+        *ngIf="user.location"
+        [label]="user.location"
+        logoName="location"
+      ></app-badge>
+
+      <app-badge
+        *ngIf="user.twitterUsername"
+        [label]="'@' + user.twitterUsername"
+        logoName="twitter"
+        [link]="'https://twitter.com/' + user.twitterUsername"
+      ></app-badge>
+    </div>
+  </div>
+
+  <app-badge
+    *ngIf="user.githubUrl"
+    [label]="'@' + user.githubUrl"
+    logoName="github"
+    [link]="user.githubUrl"
+  ></app-badge>
+</div>

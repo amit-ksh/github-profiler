@@ -7,12 +7,22 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatChipsModule} from '@angular/material/chips'
+import { MatChipsModule } from '@angular/material/chips';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { LoaderComponent } from './loader/loader.component';
+import { RepoCardComponent } from './repo-card/repo-card.component';
+import { BadgeComponent } from './badge/badge.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    ProfileViewComponent,
+    LoaderComponent,
+    RepoCardComponent,
+    BadgeComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

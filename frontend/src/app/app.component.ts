@@ -14,21 +14,39 @@ export class AppComponent {
 
   username = new FormControl('');
   user: any = null;
+  repos: any = [];
 
-  repos: any = []
-
+  totalPages = 0;
+  curPageNo = 1;
   isLoading = false;
+
+  getTotalPages() {
+    return Array(this.totalPages).fill(1);
+  }
+
+  getRepos(page: number): void {
+    if (this.curPageNo === page) return;
+    this.isLoading = true;
+    this.service
+      .getRepos(`${this.username.value}`, page)
+      .subscribe((res: any) => (this.repos = res.data));
+
+    this.curPageNo = page;
+    this.isLoading = false;
+  }
 
   onSubmit(): void {
     if (!this.username.value) return;
 
     this.isLoading = true;
-    this.service
-      .getUser(`${this.username.value}`)
-      .subscribe((res: any) => this.user = res.data);
+    this.service.getUser(`${this.username.value}`).subscribe((res: any) => {
+      this.user = res.data;
+      this.totalPages = Math.ceil(this.user.totalRepos / 10);
+    });
     this.service
       .getRepos(`${this.username.value}`)
-      .subscribe((res: any) => this.repos = res.data);
+      .subscribe((res: any) => (this.repos = res.data));
+
     this.isLoading = false;
   }
 }

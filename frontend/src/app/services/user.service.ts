@@ -9,13 +9,15 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  user: any = null
+  user: any = null;
 
   getUser(username: string) {
     return this.httpClient.get(`http://${this.url}/${username}`);
   }
 
-  getRepos(username: string) {
-    return this.httpClient.get(`http://${this.url}/${username}/repos`);
+  getRepos(username: string, page: number = 1) {
+    return this.httpClient.get(
+      `http://${this.url}/${username}/repos?page=${page}`
+    );
   }
 }

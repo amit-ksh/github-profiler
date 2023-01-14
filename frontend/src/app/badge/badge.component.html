@@ -1,0 +1,7 @@
+<div class="badge">
+  <img [src]="'assets/' + logoName + '.svg'" />
+  <a *ngIf="link" [href]="link" target="_blank"> {{ label }} </a>
+  <p *ngIf="!link">
+    {{ label }}
+  </p>
+</div>
