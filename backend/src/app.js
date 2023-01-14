@@ -6,8 +6,8 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(morgan('dev'));
 app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
 
 app.get('/:user/repos', async (req, res) => {
@@ -18,13 +18,25 @@ app.get('/:user/repos', async (req, res) => {
   perPage = perPage || 10;
 
   try {
-    const response = await fetch(
+    const resp1 = await fetch(
       `https://api.github.com/users/${user}/repos?per_page=${perPage}&page=${page}`,
     );
-    const repos = await response.json();
+    const repos = await resp1.json();
 
-    if (response.ok) {
-      res.status(200).json({ data: repos, totalRepo: repos.length });
+    const response = await Promise.all(repos.map(async (repo) => {
+      const resp2 = await fetch(repo.languages_url);
+      const languages = await resp2.json();
+
+      return {
+        id: repo.id,
+        name: repo.name,
+        description: repo.description,
+        languages: Object.keys(languages),
+      };
+    }));
+
+    if (resp1.ok) {
+      res.status(200).json({ data: response, totalRepo: repos.length });
     } else {
       res.status(404).json({
         data: {
@@ -41,11 +53,21 @@ app.get('/:user', async (req, res) => {
   const { user } = req.params;
 
   try {
-    const response = await fetch(`https://api.github.com/users/${user}`);
-    const data = await response.json();
+    const resp1 = await fetch(`https://api.github.com/users/${user}`);
+    const data = await resp1.json();
 
-    if (response.ok) {
-      res.status(200).json({ data });
+    const response = {
+      id: data.id,
+      name: data.login,
+      avatarUrl: data.avatar_url,
+      bio: data.bio,
+      location: data.location,
+      twitterUsername: data.twitter_username,
+      githubUrl: data.html_url,
+    };
+
+    if (resp1.ok) {
+      res.status(200).json({ data: response });
     } else {
       res.status(404).json({
         data: {
