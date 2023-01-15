@@ -55,6 +55,7 @@ app.get('/:user/repos', async (req, res) => {
       });
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json({ data: { message: 'Server Error!' } });
   }
 });
@@ -70,18 +71,18 @@ app.get('/:user', async (req, res) => {
     });
     const data = await resp1.json();
 
-    const response = {
-      id: data.id,
-      name: data.login,
-      avatarUrl: data.avatar_url,
-      bio: data.bio,
-      location: data.location,
-      twitterUsername: data.twitter_username,
-      githubUrl: data.html_url,
-      totalRepos: data.public_repos,
-    };
-
     if (resp1.ok) {
+      const response = {
+        id: data.id,
+        name: data.login,
+        avatarUrl: data.avatar_url,
+        bio: data.bio,
+        location: data.location,
+        twitterUsername: data.twitter_username,
+        githubUrl: data.html_url,
+        totalRepos: data.public_repos,
+      };
+
       res.status(200).json({ data: response });
     } else {
       res.status(404).json({
@@ -91,6 +92,7 @@ app.get('/:user', async (req, res) => {
       });
     }
   } catch (error) {
+    console.error(error);
     res.status(500).json({ data: { message: 'Server Error!' } });
   }
 });
