@@ -1,7 +1,7 @@
 <h4>{{ repo.name }}</h4>
 <p *ngIf="repo.description">{{ repo.description }}</p>
 <div class="label-container">
-  <p class="label" *ngFor="let lang of repo.languages; index as i">{{
-    lang
-  }}</p>
+  <p class="label" *ngFor="let lang of repo.languages; index as i">
+    {{ lang }}
+  </p>
 </div>

@@ -63,14 +63,14 @@ app.get('/:user', async (req, res) => {
   const { user } = req.params;
 
   try {
-    const resp1 = await fetch(`https://api.github.com/users/${user}`, {
+    const resp = await fetch(`https://api.github.com/users/${user}`, {
       headers: {
         authorization: `token ${process.env.GITHUB_TOKEN}`,
       },
     });
-    const data = await resp1.json();
+    const data = await resp.json();
 
-    if (resp1.ok) {
+    if (resp.ok) {
       const response = {
         id: data.id,
         name: data.login,

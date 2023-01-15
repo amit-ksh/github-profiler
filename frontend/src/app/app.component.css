@@ -63,7 +63,6 @@ form {
   border: 2px solid black;
 }
 
-
 @media only screen and (max-width: 700px) {
   .repos__container {
     grid-template-columns: repeat(1, 1fr);

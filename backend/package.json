@@ -2,7 +2,7 @@
   "name": "github-profiler-backend",
   "version": "0.0.0",
   "description": "A basic starter for an express.js API",
-  "private":true,
+  "private": true,
   "main": "index.js",
   "scripts": {
     "start": "node src/index.js",
