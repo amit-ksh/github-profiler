@@ -1,7 +1,7 @@
 <h4>{{ repo.name }}</h4>
 <p *ngIf="repo.description">{{ repo.description }}</p>
-<mat-chip-listbox class="chips" aria-label="Tech Used">
-  <mat-chip-option *ngFor="let lang of repo.languages; index as i">{{
+<div class="label-container">
+  <p class="label" *ngFor="let lang of repo.languages; index as i">{{
     lang
-  }}</mat-chip-option>
-</mat-chip-listbox>
+  }}</p>
+</div>

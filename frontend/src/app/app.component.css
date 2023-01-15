@@ -63,16 +63,6 @@ form {
   border: 2px solid black;
 }
 
-.repo h4 {
-  font-size: 1.5em;
-  color: lightskyblue;
-}
-
-.repo p {
-  font-size: 1rem;
-  letter-spacing: -1px;
-  font-weight: 500;
-}
 
 @media only screen and (max-width: 700px) {
   .repos__container {

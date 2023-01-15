@@ -6,6 +6,13 @@
 }
 
 .badge p,
-a {
+.badge a {
+  color: #0022ff;
   margin: 0;
+  text-decoration: none;
+}
+
+.badge p {
+  color: black;
+  font-weight: 600;
 }
