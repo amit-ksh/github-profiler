@@ -28,25 +28,24 @@ app.get('/:user/repos', async (req, res) => {
     );
     const repos = await resp1.json();
 
-    const response = await Promise.all(
-      repos.map(async (repo) => {
-        const resp2 = await fetch(repo.languages_url, {
-          headers: {
-            authorization: `token ${process.env.GITHUB_TOKEN}`,
-          },
-        });
-        const languages = await resp2.json();
-
-        return {
-          id: repo.id,
-          name: repo.name,
-          description: repo.description,
-          languages: Object.keys(languages),
-        };
-      }),
-    );
-
     if (resp1.ok) {
+      const response = await Promise.all(
+        repos.map(async (repo) => {
+          const resp2 = await fetch(repo.languages_url, {
+            headers: {
+              authorization: `token ${process.env.GITHUB_TOKEN}`,
+            },
+          });
+          const languages = await resp2.json();
+
+          return {
+            id: repo.id,
+            name: repo.name,
+            description: repo.description,
+            languages: Object.keys(languages),
+          };
+        }),
+      );
       res.status(200).json({ data: response });
     } else {
       res.status(404).json({

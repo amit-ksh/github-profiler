@@ -11,7 +11,7 @@ describe('GET /octocat/repos?page=10', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .end((err, res) => {
-        if (err || res.body.totalRepo > page) {
+        if (err || res.body.data.length > page) {
           return done(err);
         }
 
