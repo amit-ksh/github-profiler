@@ -55,8 +55,7 @@ app.get('/:user/repos', async (req, res) => {
       });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ data: { message: 'Server Error!' } });
+    res.status(500).json({ error });
   }
 });
 
@@ -92,8 +91,7 @@ app.get('/:user', async (req, res) => {
       });
     }
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ data: { message: 'Server Error!' } });
+    res.status(500).json({ error });
   }
 });
 
