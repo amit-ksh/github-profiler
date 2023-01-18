@@ -1,0 +1,64 @@
+<form [formGroup]="proxyForm" (ngSubmit)="onSubmit()">
+  <mat-form-field class="username">
+    <input
+      [formControl]="username"
+      id="username"
+      matInput
+      type="text"
+      placeholder="Enter a GitHub username"
+      required
+      autocomplete="off"
+    />
+  </mat-form-field>
+</form>
+
+<main>
+  <app-profile-view *ngIf="user" [user]="user"></app-profile-view>
+
+  <app-loader *ngIf="isLoading"></app-loader>
+
+  <div *ngIf="repos.length !== 0" class="repos__wrapper">
+    <div class="repos__container">
+      <app-repo-card
+        class="repo"
+        *ngFor="let repo of repos; index as i"
+        [repo]="repo"
+      ></app-repo-card>
+    </div>
+
+    <div class="page-buttons">
+      <button [disabled]="curPageNo === 1" (click)="getRepos(curPageNo - 1)">
+        <<
+      </button>
+      <div *ngFor="let _ of getTotalPages(); index as i">
+        <button
+          (click)="getRepos(i + 1)"
+          [className]="curPageNo === i + 1 && 'active'"
+        >
+          {{ i + 1 }}
+        </button>
+      </div>
+      <button
+        [disabled]="curPageNo === totalPages"
+        (click)="getRepos(curPageNo + 1)"
+      >
+        >>
+      </button>
+    </div>
+
+    <div class="navigator">
+      <button (click)="getRepos(curPageNo - 1)" [disabled]="curPageNo === 1">
+        ← Older
+      </button>
+      <button
+        (click)="getRepos(curPageNo + 1)"
+        [disabled]="curPageNo === totalPages"
+      >
+        Newer →
+      </button>
+    </div>
+  </div>
+  <div *ngIf="repos.length === 0">
+    <div *ngIf="!!isLoading">User have 0 repository!</div>
+  </div>
+</main>

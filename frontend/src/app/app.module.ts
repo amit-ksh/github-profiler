@@ -14,6 +14,8 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { LoaderComponent } from './loader/loader.component';
 import { RepoCardComponent } from './repo-card/repo-card.component';
 import { BadgeComponent } from './badge/badge.component';
+import { ErrorComponent } from './error/error.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { BadgeComponent } from './badge/badge.component';
     LoaderComponent,
     RepoCardComponent,
     BadgeComponent,
+    ErrorComponent,
+    UserDashboardComponent,
   ],
   imports: [
     BrowserModule,

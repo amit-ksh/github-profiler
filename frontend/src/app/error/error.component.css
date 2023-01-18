@@ -1,0 +1,28 @@
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+a {
+  font-size: 1rem;
+  text-decoration: none;
+  display: flex;
+  gap: 0.5rem;
+}
+
+a span {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
