@@ -23,7 +23,6 @@ form {
 }
 
 .repo {
-  padding: 1rem;
   border: 2px solid black;
 }
 
@@ -84,4 +83,15 @@ form {
   color: blue;
   cursor: pointer;
   font-size: 1rem;
+}
+
+button:hover {
+  background: skyblue;
+  color: white;
+}
+
+button:disabled {
+  border-color: lightgray !important;
+  color: lightgray !important;
+  cursor: default !important;
 }

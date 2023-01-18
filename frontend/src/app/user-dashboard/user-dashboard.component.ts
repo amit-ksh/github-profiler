@@ -47,7 +47,6 @@ export class UserDashboardComponent {
       next: (res: any) => {
         this.user = res.data;
         this.totalPages = Math.ceil(this.user.totalRepos / 10);
-        this.router.navigate(['/'])
       },
       error: (err: any) => {
         console.log('ERROR!', err);

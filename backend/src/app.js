@@ -42,11 +42,15 @@ app.get('/:user/repos', async (req, res) => {
             id: repo.id,
             name: repo.name,
             description: repo.description,
+            repoLink: repo.html_url,
             languages: Object.keys(languages),
           };
         }),
       );
-      res.status(200).json({ data: response });
+
+      res.status(200).json(
+        { data: response.sort((a, b) => a.languages.length - b.languages.length) },
+      );
     } else {
       res.status(404).json({
         data: {
